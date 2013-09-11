@@ -18,11 +18,41 @@ TODO: more description
 4. Install Karma (if not already installed) `npm install karma -g`
 5. Install development dependencies (Karma plugins for Jasmine, Dojo, browsers, etc): `npm install`
 6. Run my tests: `karma start karma.config.js`
-7. Add your own specs and code under /spec and /src and let karma run your tests for you!
+7. Add your own specs and code under `/spec` and `/src` and let karma run your tests for you!
 
 ## How It Works
 
-TODO: how does it work?
+This tutorial relies on the [karma-dojo plugin](https://github.com/karma-runner/karma-dojo) which enables testing of AMD style Dojo code.
+
+After insalling and configuring the plug in, the trick is to set the `dojoConfig` in main.js to use the [ArcGIS API for JavaScript](http://js.arcgis.com) for the Dojo and Esri packages as follows:
+
+```
+var dojoConfig = {
+    packages: [
+        // local pacakges to test
+        {
+            name:"esri-utils",
+            location:"/base/src/esri-utils"
+        },
+        // hosted packages
+        {
+            name: 'esri',
+            location: 'http://js.arcgis.com/3.6/js/esri'
+        }, {
+            name: 'dojo',
+            location: 'http://js.arcgis.com/3.6/js/dojo/dojo'
+        }, {
+            name: 'dojox',
+            location: 'http://js.arcgis.com/3.6/js/dojo/dojox'
+        }, {
+            name: 'dijit',
+            location: 'http://js.arcgis.com/3.6/js/dojo/dijit'
+        }
+    ],
+    async: true
+};
+
+```
 
 ## Requirements
 

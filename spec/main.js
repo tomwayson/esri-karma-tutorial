@@ -10,10 +10,13 @@ Object.keys(window.__karma__.files).forEach(function(file) {
 
 var dojoConfig = {
     packages: [
+        // local pacakges to test
         {
             name:"esri-utils",
             location:"/base/src/esri-utils"
-        }, {
+        },
+        // hosted packages
+        {
             name: 'esri',
             location: 'http://js.arcgis.com/3.6/js/esri'
         }, {
@@ -27,7 +30,7 @@ var dojoConfig = {
             location: 'http://js.arcgis.com/3.6/js/dojo/dijit'
         }
     ],
-    asynch: true
+    async: true
 };
 
 
