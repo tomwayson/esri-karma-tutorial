@@ -12,7 +12,7 @@ If you (don't already know and) want to know why Karma is so awesome, I suggest 
 
 http://youtu.be/MVw8N3hTfCI?t=3m44s
 
-In a nut shell, Karma: 
+In a nut shell, Karma:
 * watches for changes in your source and test files and re-run all your tests as soon as you save any changes
 * runs those tests in one or more browsers
 * works with most popular testing frameworks (Jasmine, Mocha, Qunit)
@@ -31,7 +31,7 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 3. Install Node (if not already installed) from [http://nodejs.org/](http://nodejs.org/)
 4. Install Karma (if not already installed) `npm install karma -g`
 5. Install development dependencies (Karma plugins for Jasmine, Dojo, browsers, etc): `npm install`
-6. Run my tests: `karma start karma.config.js`
+6. Run my tests: `karma start karma.conf.js` or just `karma start`
 7. Add your own specs and code under `/spec` and `/src` and let karma run your tests for you!
 
 ## How It Works
