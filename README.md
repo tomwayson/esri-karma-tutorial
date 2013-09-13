@@ -1,14 +1,28 @@
 # Esri Karma Tutorial
 
-A demonstration of how to use the Karma test runner to automatically run Jasmine BDD-style unit tests on your [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/) code.
-
-TODO: more description
+If you're building web mapping apps using the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/), and need a way to automate running your unit tests, this tutorial will show you how using the [Karma test runner](http://karma-runner.github.io/) and [Jasmine](http://pivotal.github.io/jasmine/) BDD-style testing framework.
 
 <!-- TODO: add link to gh-pages
 [View it live]()
  -->
 <!-- TODO: add app screenshot -->
 <!--![App]()-->
+
+If you (don't already know and) want to know why Karma is so awesome, I suggest watching this video, starting at the point where the frist tests are run:
+
+http://youtu.be/MVw8N3hTfCI?t=3m44s
+
+In a nut shell, Karma: 
+* watches for changes in your source and test files and re-run all your tests as soon as you save any changes
+* runs those tests in one or more browsers
+* works with most popular testing frameworks (Jasmine, Mocha, Qunit)
+* works with AMD (Require.js and Dojo) code
+* is easy to intall and configure w/ NPM
+
+This tutorial demonstrates the configuration settings to get Karma running Jasmine BDD-style tests on code that relies on the ArcGIS API for JavaScript.
+
+[Jasmine](http://pivotal.github.io/jasmine/) is a popular and simple BDD-style JavaScript testing framework. Details on using Jasmine can be found at the [Jasmine Wiki]
+(https://github.com/pivotal/jasmine/wiki).
 
 ## Development Instructions
 
@@ -67,13 +81,15 @@ And the latest versions of:
 * [karma-dojo](https://github.com/karma-runner/karma-dojo)
 
 ## Resources
-* [Node](http://nodejs.org/)
+* [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/)
 * [Karma](http://karma-runner.github.io/)
-* [Jasmine](http://pivotal.github.io/jasmine/)
 * [Configuring karma-dojo](https://github.com/garcimouche/karma/tree/feature-328/test/e2e/dojo)
+* [Jasmine](http://pivotal.github.io/jasmine/)
+* [Jasmine Wiki]
+(https://github.com/pivotal/jasmine/wiki)
+* [Node](http://nodejs.org/)
 * [ArcGIS for Developers](http://developers.arcgis.com)
 * [ArcGIS REST Services](http://resources.arcgis.com/en/help/arcgis-rest-api/)
-* [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/)
 * [@esri](http://twitter.com/esri)
 
 ## Issues
