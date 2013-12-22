@@ -32,7 +32,10 @@ function(
       return esriRequest({
         url: url
       }, {
-        // usePost: false
+        // NOTE: this might fail if we didn't have
+        // the karma reverse proxy which prevents
+        // the POST request from being cross-domain
+        usePost: true
       });
     }
   };

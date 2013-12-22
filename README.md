@@ -13,8 +13,9 @@ If you (don't already know and) want to know why Karma is so awesome, I suggest 
 http://youtu.be/MVw8N3hTfCI?t=3m44s
 
 In a nut shell, Karma:
-* watches for changes in your source and test files and re-run all your tests as soon as you save any changes
-* runs those tests in one or more browsers
+* serves up your app and test files in a local web server, which includes a reverse-proxy to prevent cross-origin requestes
+* launch one or more browsers pointing to above web server and runs your tests
+* watches for changes in your source and test files and re-run all your tests as soon as you save a file
 * works with most popular testing frameworks (Jasmine, Mocha, Qunit)
 * works with AMD (Require.js and Dojo) code
 * is easy to intall and configure w/ NPM
@@ -72,7 +73,7 @@ var dojoConfig = {
 
 ### Dependencies
 
-* [ArcGIS API for JavaScript](http://js.arcgis.com): built/tested on v3.6, may work w/ earlier versions.
+* [ArcGIS API for JavaScript](http://js.arcgis.com): built/tested on v3.6 and updated to latest; may work w/ earlier versions.
 
 And the latest versions of:
 * [Node](http://nodejs.org/)

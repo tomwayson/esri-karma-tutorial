@@ -23,6 +23,10 @@ module.exports = function(config) {
     // web server port
     port: 9876,
 
+    // proxy for cross domain requests
+    proxies:  {
+      '/arcgis/': 'http://imagery.arcgisonline.com/arcgis/'
+    },
 
     // cli runner port
     runnerPort: 9100,

@@ -15,7 +15,7 @@ define([
     // runs before each spec
     beforeEach(function() {
       // test service
-      url = "http://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/FalseColor/ImageServer";
+      url = "/arcgis/rest/services/LandsatGLS/FalseColor/ImageServer";
       // init map
       var div = domConstruct.create('div', {style: 'width:300px;height:200px'});
       map = new Map(div, {
@@ -67,7 +67,7 @@ define([
     it("should replace the layer if already added", function() {
       // empty variable to hold results
       var options = {id: 'myLayerId'},
-        replaceUrl = 'http://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/GLS2010_Enhanced/ImageServer',
+        replaceUrl = '/arcgis/rest/services/LandsatGLS/GLS2010_Enhanced/ImageServer',
         added = false,
         replaced = false,
         myLayer;
