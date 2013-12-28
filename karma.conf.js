@@ -52,7 +52,14 @@ module.exports = function(config) {
     // - Opera
     // - Safari
     // - PhantomJS
-    browsers: ['Chrome'],
+    browsers: [
+      'Chrome'
+      // add the name of each additional browser you want to test in below
+      // you may need to first set it's path in an environment vairable, for example:
+      // set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+      // see: http://karma-runner.github.io/0.8/config/browsers.html
+      // , 'Firefox'
+    ],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit

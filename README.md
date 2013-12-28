@@ -35,6 +35,13 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 6. Run my tests: `karma start karma.conf.js` or just `karma start`
 7. Add your own specs and code under `/spec` and `/src` and let karma run your tests for you!
 
+### Testing in Additional Browsers
+You can test in additional browsers by adding the names of each in the `browsers` section of `karma.conf.js`. Note that you may need to first set the path to each in an environment vairable, for example:
+```
+set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+```
+See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.8/config/browsers.html) for more information.
+
 ## How It Works
 
 This tutorial relies on the [karma-dojo plugin](https://github.com/karma-runner/karma-dojo) which enables testing of AMD style Dojo code.
