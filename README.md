@@ -25,7 +25,7 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 [Jasmine](http://pivotal.github.io/jasmine/) is a popular and simple BDD-style JavaScript testing framework. Details on using Jasmine can be found at the [Jasmine Wiki]
 (https://github.com/pivotal/jasmine/wiki).
 
-## Development Instructions
+## Running the Tests
 
 1. Clone the repo: `git clone https://github.com/tomwayson/esri-karma-tutorial`
 2. Go to local copy of repo: `cd esri-karma-tutorial`
@@ -35,12 +35,28 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 6. Run my tests: `karma start karma.conf.js` or just `karma start`
 7. Add your own specs and code under `/spec` and `/src` and let karma run your tests for you!
 
+## More fun with Karma
+
 ### Testing in Additional Browsers
-You can test in additional browsers by adding the names of each in the `browsers` section of `karma.conf.js`. Note that you may need to first set the path to each in an environment vairable, for example:
+
+You can test in additional browsers by updating `karma.conf.js` for each additional brower:
+
+1. Add the browser name in the `browsers` section
+2. Register the browser's launcher in the `plugins` section
+
+Note that for each additional browser you may need to first:
+
+1. Install the browser launcher
+2. Set the path to each in an environment vairable
+
+For example:
 ```
+npm install karma-firefox-launcher --save-dev
+....
 set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
 ```
-See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.8/config/browsers.html) for more information.
+
+See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.10/config/browsers.html) for more information.
 
 ## How It Works
 
