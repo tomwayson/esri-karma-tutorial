@@ -15,9 +15,22 @@ module.exports = function(config) {
     ],
 
 
+    // uncomment the following for code coverage
+    // preprocessors: {
+    //   // source files, that you wanna generate coverage for
+    //   // do not include tests or libraries
+    //   // (these files will be instrumented by Istanbul)
+    //   'src/**/*.js': ['coverage']
+    // },
+
+
     // test results reporter to use
     // possible values: dots || progress
-    reporters: ['dots'],
+    reporters: [
+      'dots'
+      // uncomment the following line for code coverage
+      // , 'coverage'
+    ],
 
 
     // web server port
@@ -27,6 +40,7 @@ module.exports = function(config) {
     proxies:  {
       '/arcgis/': 'http://imagery.arcgisonline.com/arcgis/'
     },
+
 
     // cli runner port
     runnerPort: 9100,
@@ -52,14 +66,24 @@ module.exports = function(config) {
     // - Opera
     // - Safari
     // - PhantomJS
+    // NOTE: you may need to first set it's path in an environment vairable, for example:
+    // set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+    // see: http://karma-runner.github.io/0.10/config/browsers.html
     browsers: [
       'Chrome'
-      // add the name of each additional browser you want to test in below
-      // you may need to first set it's path in an environment vairable, for example:
-      // set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
-      // see: http://karma-runner.github.io/0.8/config/browsers.html
+      // add the name (from above) for each additional
+      // browser you want to test below
       // , 'Firefox'
     ],
+
+
+    // uncomment the following for coverage options
+    // see: https://github.com/karma-runner/karma-coverage#options
+    // coverageReporter: {
+    //   type : 'text',
+    //   dir: 'coverage/'
+    // },
+
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
@@ -68,8 +92,11 @@ module.exports = function(config) {
     plugins: [
       'karma-dojo',
       'karma-jasmine',
-      'karma-chrome-launcher',
-      'karma-firefox-launcher'
+      'karma-chrome-launcher'
+      // uncomment for firefox launcher
+      //, 'karma-firefox-launcher'
+      // uncomment for code coverage
+      //, 'karma-coverage'
     ]
   });
 };

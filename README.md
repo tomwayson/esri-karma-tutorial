@@ -13,12 +13,13 @@ If you (don't already know and) want to know why Karma is so awesome, I suggest 
 http://youtu.be/MVw8N3hTfCI?t=3m44s
 
 In a nut shell, Karma:
+* is easy to intall and configure w/ NPM
 * serves up your app and test files in a local web server, which includes a reverse-proxy to prevent cross-origin requestes
-* launch one or more browsers pointing to above web server and runs your tests
-* watches for changes in your source and test files and re-run all your tests as soon as you save a file
+* launches one or more browsers pointing to above web server and runs your tests
+* watches for changes in your source and test files and re-runs all your tests as soon as you save a file
 * works with most popular testing frameworks (Jasmine, Mocha, Qunit)
 * works with AMD (Require.js and Dojo) code
-* is easy to intall and configure w/ NPM
+* can generage code coverage reports and much more via plugins
 
 This tutorial demonstrates the configuration settings to get Karma running Jasmine BDD-style tests on code that relies on the ArcGIS API for JavaScript.
 
@@ -57,6 +58,19 @@ set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
 ```
 
 See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.10/config/browsers.html) for more information.
+
+### Code Coverage
+
+You can get [Istanbul](https://github.com/yahoo/istanbul) code coverage reports for your tests by installing the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin:
+
+```
+npm install karma-coverage --save-dev
+```
+
+After insalling the plugin, uncomment the coverage related lines in the `preprocessors`, `reporters`, `coverageReporter`, and `plugins` sections of `karma.conf.js` and run karma.
+
+See the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin README for more information.
+
 
 ## How It Works
 
