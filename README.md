@@ -71,6 +71,11 @@ After insalling the plugin, uncomment the coverage related lines in the `preproc
 
 See the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin README for more information.
 
+### Other Test Frameworks
+
+This repo shows you how to use Karma to run unit tests using the Jasmine test framework, but Karma can be used with other test frameworks. For an example of how to use Karma to run [Mocha](http://visionmedia.github.io/mocha/) tests with the [ArcGIS API for JavaScript](http://js.arcgis.com), see:
+
+https://github.com/Esri/landscape-modeler-js
 
 ## How It Works
 
