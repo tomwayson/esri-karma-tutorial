@@ -34,86 +34,49 @@ define([
     });
 
     // specs
-    it("should add the layer if not already added", function() {
-      // empty variable to hold results
+    it("should add the layer if not already added", function(done) {
       var options = {id: 'myLayerId'},
-        added = false,
         myLayer;
-      // run test w/ some async operation
-      runs(function() {
-        // after each layer has been added
-        map.on('layer-add-result', function(e) {
-          console.log(e.layer.id, e.layer.url);
-          if (e.layer.url === url) {
-            myLayer = e.layer;
-            added = true;
-          }
-        });
-        imageServiceUtils.setUrl(map, url, options);
+      map.on('layer-add-result', function(e) {
+        console.log(e.layer.id, e.layer.url);
+        if (e.layer.url === url) {
+          myLayer = e.layer;
+          expect(myLayer).toBeDefined();
+          expect(myLayer.id).toEqual(options.id);
+          expect(myLayer.url).toEqual(url);
+          done();
+        }
       });
-      // continually test for completion of async operation
-      // or 5 sec which ever comes first
-      waitsFor(function() {
-        return added;
-      }, 'the layer to load', 5000);
-      // test assertions only after async operation complete
-      runs(function () {
-        expect(myLayer).toBeDefined();
-        expect(myLayer.id).toEqual(options.id);
-        expect(myLayer.url).toEqual(url);
-      });
+      imageServiceUtils.setUrl(map, url, options);
     });
 
-    it("should replace the layer if already added", function() {
-      // empty variable to hold results
+    it("should replace the layer if already added", function(done) {
       var options = {id: 'myLayerId'},
         replaceUrl = '/arcgis/rest/services/LandsatGLS/GLS2010_Enhanced/ImageServer',
-        added = false,
-        replaced = false,
         myLayer;
-      // run test w/ some async operation
-      runs(function() {
-        // after each layer has been added
-        map.on('layer-add-result', function(e) {
-          console.log(e.layer.id, e.layer.url);
-          if (e.layer.url === url) {
-            myLayer = e.layer;
-            added = true;
-          }
-          if (e.layer.url === replaceUrl) {
-            myLayer = e.layer;
-            replaced = true;
-          }
-        });
-        imageServiceUtils.setUrl(map, url, options);
-      });
-      // continually test for completion of async operation
-      // or 5 sec which ever comes first
-      waitsFor(function() {
-        return added;
-      }, 'the layer to load for the first time', 5000);
-      // test assertions only after async operation complete
-      runs(function () {
-        // test assertions
-        expect(myLayer).toBeDefined();
-        expect(myLayer.id).toEqual(options.id);
-        expect(myLayer.url).toEqual(url);
+      // after each layer has been added
+      map.on('layer-add-result', function(e) {
+        console.log(e.layer.id, e.layer.url);
+        if (e.layer.url === url) {
+          // layer added for the first time
+          myLayer = e.layer;
+          expect(myLayer).toBeDefined();
+          expect(myLayer.id).toEqual(options.id);
+          expect(myLayer.url).toEqual(url);
 
-        // now let's update the layer and re test
-        imageServiceUtils.setUrl(map, replaceUrl, options);
+          // now let's update the layer and re test
+          imageServiceUtils.setUrl(map, replaceUrl, options);
+        } else if (e.layer.url === replaceUrl) {
+          // second time
+          // - id should be same, but url updated
+          myLayer = e.layer;
+          expect(myLayer).toBeDefined();
+          expect(myLayer.id).toEqual(options.id);
+          expect(myLayer.url).toEqual(replaceUrl);
+          done();
+        }
       });
-
-      waitsFor(function() {
-        return replaced;
-      }, 'the layer to load with the new url', 5000);
-      // test assertions only after async operation complete
-      runs(function () {
-        // test assertions
-        // - id should be same, but url updated
-        expect(myLayer).toBeDefined();
-        expect(myLayer.id).toEqual(options.id);
-        expect(myLayer.url).toEqual(replaceUrl);
-      });
+      imageServiceUtils.setUrl(map, url, options);
     });
   });
 });
