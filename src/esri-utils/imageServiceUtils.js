@@ -11,6 +11,17 @@ function(
   esriRequest, ArcGISImageServiceLayer
 ) {
   return {
+
+    // get service item info as json
+    getItemInfo: function(serviceUrl) {
+      var url = serviceUrl + "/info/iteminfo";
+      var requestParams = { f: "json"};
+      url += "?" + ioQuery.objectToQuery(requestParams);
+      return esriRequest({
+        url: url
+      });
+    },
+
     // if layer exists and does not have same URL then
     //   get existing options and remove the layer
     // then re-add the layer w/ same id/options, but new URL
@@ -24,19 +35,6 @@ function(
       }
       var imageServiceLayer = new ArcGISImageServiceLayer(url, options);
       return map.addLayer(imageServiceLayer);
-    },
-    getItemInfo: function(serviceUrl) {
-      var url = serviceUrl + "/info/iteminfo";
-      var requestParams = { f: "pjson"};
-      url += "?" + ioQuery.objectToQuery(requestParams);
-      return esriRequest({
-        url: url
-      }, {
-        // NOTE: this might fail if we didn't have
-        // the karma reverse proxy which prevents
-        // the POST request from being cross-domain
-        usePost: true
-      });
     }
   };
 });
