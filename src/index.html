@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples 
+      on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Image Service Selector</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" />
+
+    <style>
+      html, body, #map { height: 100%; width: 100%; margin: 0; padding: 0; }
+      #layers {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+    <script>
+      // configure dojo loader
+      (function(){
+        var path = location.pathname.replace(/\/[^/]+$/, '/');
+        window.dojoConfig = {
+          parseOnLoad: false,
+          async: true,
+          packages: [
+            {
+              name: "esri-utils",
+              location: path + 'esri-utils'
+            }
+          ]
+        };
+      }());
+    </script>
+    <script src="http://js.arcgis.com/3.8/"></script>
+    <script>
+      var map;
+      require([
+        "dojo/parser", "dojo/dom", "dojo/on",
+        "esri/map",
+        "esri-utils/imageServiceUtils",
+        "dojo/domReady!"
+      ], function(
+        parser, dom, on,
+        Map,
+        imageServiceUtils
+      ) {
+        parser.parse();
+
+        // init the map
+        map = new Map("map", {
+          basemap: "topo",
+          center: [-122.45, 37.75],
+          zoom: 13,
+          sliderStyle: "small"
+        });
+
+        // init the imagery layer w/ default selected option
+        updateLayerUrl();
+
+        // update imagery layer url each time the drop down changes
+        on(dom.byId('selector'), 'change', updateLayerUrl);
+
+        function updateLayerUrl(params) {
+          var url = dom.byId('selector').value;
+          imageServiceUtils.setUrl(map, url, {id: 'imageryLayer'});
+          console.log(map.layerIds);
+        }
+      });
+    </script>
+  </head>
+  
+  <body>
+    <div id="map"> </div>
+    <div id="layers">
+      <select id="selector">
+        <option value="http://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/FalseColor/ImageServer">False Color</option>
+        <option value="http://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/GLS2010_Enhanced/ImageServer" selected>Enhanced</option>
+      </select>
+    </div>
+  </body>
+
+</html>
