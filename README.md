@@ -97,16 +97,16 @@ var dojoConfig = {
         // hosted packages
         {
             name: 'esri',
-            location: 'http://js.arcgis.com/3.10/js/esri'
+            location: 'http://js.arcgis.com/3.11/esri'
         }, {
             name: 'dojo',
-            location: 'http://js.arcgis.com/3.10/js/dojo/dojo'
+            location: 'http://js.arcgis.com/3.11/dojo'
         }, {
             name: 'dojox',
-            location: 'http://js.arcgis.com/3.10/js/dojo/dojox'
+            location: 'http://js.arcgis.com/3.11/dojox'
         }, {
             name: 'dijit',
-            location: 'http://js.arcgis.com/3.10/js/dojo/dijit'
+            location: 'http://js.arcgis.com/3.11/dijit'
         }
     ],
     async: true
