@@ -43,30 +43,64 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 
 ### Testing in Additional Browsers
 
-You can test in additional browsers by updating `karma.conf.js` for each additional brower:
-
-1. Add the browser name in the `browsers` section
-2. Register the browser's launcher in the `plugins` section
-
-Note that for each additional browser you may need to first:
+Testing in additional browsers with Karma is a breeze. For each browser you want to test in you simply:
 
 1. Install the browser launcher
-2. Set the path to each in an environment vairable
+2. Add the browser name in the `browsers` section
+3. Register the browser's launcher in the `plugins` section
 
-For example:
-```
-npm install karma-firefox-launcher --save-dev
-....
+Note that you may need to first set the path to the browser's executable in an environment vairable.
+
+For example, to run tests in FireFox as well as Chrome:
+```bash
 set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+npm install karma-firefox-launcher --save-dev
+```
+After insalling the plugin, update the `browsers` and `plugins` sections of `karma.conf.js`:
+```js
+    browsers: ['Chrome', 'Firefox'],
 ```
 
-See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.10/config/browsers.html) for more information.
+```js
+    plugins: [
+      'karma-dojo',
+      ...
+      'karma-chrome-launcher',
+      'karma-phantomjs-launcher'
+    ]
+```
+Re-run Karma and you should see your tests run in both Chrome and Firefox.
+
+See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.12/config/browsers.html) for more information.
+
+### Going Headless with PhantomJS
+
+If you prefer to not have Karma spawn several browser windows while you are coding you can have Karma run your tests in a "headless" browser such as [PhantomJS](http://phantomjs.org/).
+
+```bash
+npm install --save-dev karma-phantomjs-launcher
+```
+After insalling the plugin, update the `browsers` and `plugins` sections of `karma.conf.js`:
+```js
+    browsers: ['PhantomJS'],
+```
+
+```js
+    plugins: [
+      'karma-dojo',
+      ...
+      'karma-phantomjs-launcher'
+    ]
+```
+Re-run Karma and you should see your tests run in PhantomJS.
+
+See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.12/config/browsers.html) for more information.
 
 ### Code Coverage
 
 You can get [Istanbul](https://github.com/yahoo/istanbul) code coverage reports for your tests by installing the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin:
 
-```
+```bash
 npm install karma-coverage --save-dev
 ```
 
