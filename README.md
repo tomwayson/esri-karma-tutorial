@@ -96,6 +96,47 @@ Re-run Karma and you should see your tests run in PhantomJS.
 
 See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.12/config/browsers.html) for more information.
 
+### Calling Karma from Grunt
+
+Often you'll want to run your tests as part of some workflow (like a build). Futhermore, in that workflow, you may want to override your default test configuration settings, such as which browsers to use, or to only run the tests once. The steps below show how to use [Grunt](http://gruntjs.com/) to run tests using Karma's default configuration from above with the exception that the tests will only run one time.
+
+If you don't already have the [Grunt CLI](http://gruntjs.com/getting-started) installed globally, run this:
+```bash
+npm install -g grunt-cli
+```
+Then install a local grunt and the karma plugin for grunt in this repo:
+```bash
+npm install --save-dev grunt
+npm install --save-dev grunt-karma
+```
+Then add `gruntfile.js` at the repo's root folder with the following configuration:
+```js
+module.exports = function(grunt) {
+
+  grunt.initConfig({
+    karma: {
+      unit: {
+        // use Karma's defaults
+        configFile: 'karma.conf.js',
+        // override single run to stop after running once
+        singleRun: true
+      }
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-karma');
+
+  grunt.registerTask('default', ['karma']);
+};
+
+```
+Finally run Karma from Grunt with:
+```bash
+grunt karma
+```
+
+See the [Grunt](http://gruntjs.com/getting-started) and [grunt-karma](https://www.npmjs.com/package/grunt-karma) documentaion for more information.
+
 ### Code Coverage
 
 You can get [Istanbul](https://github.com/yahoo/istanbul) code coverage reports for your tests by installing the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin:
