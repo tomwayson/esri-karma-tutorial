@@ -59,7 +59,7 @@ define([
     it("should have the same number of rings as all input polygons", function() {
       var ringCount = 0,
         mergedPolygon;
-      polygons.forEach(function(polygon) {
+      array.forEach(polygons, function(polygon) {
         ringCount += polygon.rings.length;
       });
       mergedPolygon = geometryUtils.createMergedPolygon(polygons, polygons[0].spatialReference);

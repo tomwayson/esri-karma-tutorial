@@ -58,7 +58,6 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-
     // Start these browsers, currently available:
     // - Chrome
     // - ChromeCanary
@@ -88,6 +87,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false
-
   });
 };

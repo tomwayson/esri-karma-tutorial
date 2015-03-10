@@ -2,11 +2,13 @@ var allTestFiles = [];
 // var TEST_REGEXP = /test.*\.js$/;
 var TEST_REGEXP = /.*Spec\.js$/;
 
-Object.keys(window.__karma__.files).forEach(function(file) {
+// Object.keys(window.__karma__.files).forEach(function(file) {
+for (var file in window.__karma__.files) {
     if (TEST_REGEXP.test(file)) {
         allTestFiles.push(file);
     }
-});
+}
+// });
 
 var dojoConfig = {
     packages: [

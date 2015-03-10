@@ -10,10 +10,13 @@ define([
 
   describe('map tests', function() {
     var map;
+    var frag;
 
     // create the map
     beforeEach(function() {
+      frag = document.createDocumentFragment();
       var div = domConstruct.create('div', {style: 'width:300px;height:200px'});
+      domConstruct.place(div, frag);
       map = new Map(div, {
           basemap: "topo",
           center: [-122.45, 37.75],
@@ -27,6 +30,7 @@ define([
     afterEach(function() {
       map.destroy();
       map = null;
+      frag = null;
     });
 
     describe('when setting layer url', function() {
