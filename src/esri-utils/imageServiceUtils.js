@@ -2,7 +2,7 @@ define([
   "dojo/io-query",
 
   "esri/request",
-  "esri/layers/ArcGISImageServiceLayer",
+  "esri/layers/ArcGISImageServiceLayer"
 
   // "esri/request"
 ],

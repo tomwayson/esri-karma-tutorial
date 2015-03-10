@@ -1,0 +1,37 @@
+{
+  "strict": false,
+  "quotmark": false,
+  "expr": true, // needed for to.be.ok
+  // Custom Globals - additional predefined global variables
+  // Using both `predef` and `globals` to support tools with older jshint parsers
+  "predef": [
+    "define",
+    "require",
+    "describe",
+    "xdescribe",
+    "it",
+    "xit",
+    "expect",
+    "beforeEach",
+    "afterEach",
+    "before",
+    "after",
+    "sinon",
+    "console"
+  ],
+  "globals": { // ** `false` = don't allow variable to be redefined locally
+    "define": false,
+    "require": false,
+    "describe": false,
+    "xdescribe": false,
+    "it": false,
+    "xit": false,
+    "expect": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "before": false,
+    "after": false,
+    "sinon": false,
+    "console": false
+  }
+}
