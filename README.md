@@ -149,6 +149,60 @@ After insalling the plugin, uncomment the coverage related lines in the `preproc
 
 See the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin README for more information.
 
+### Spies, Fakes, and Mocks
+
+You can use spies, fakes, and mocks from [Sinon.js](http://sinonjs.org/) in your tests by installing the [karma-sinon](https://www.npmjs.com/package/karma-sinon) plugin:
+
+```bash
+npm install karma-sinon --save-dev
+```
+
+After insalling the plugin, uncomment the sinon related lines in the `frameworks`, and `plugins` sections of `karma.conf.js`.
+
+For an example of how to use Sinon.js's fake server to test code that generates an XHR request without actually makeing the XHR request, add the following test suite to `specs/imageServiceUtilsSpec.js`:
+
+```js
+  describe('item info tests', function() {
+    var server;
+
+    beforeEach(function() {
+      server = sinon.fakeServer.create();
+    });
+
+    afterEach(function() {
+      server.restore();
+    });
+
+    it('should request item info', function(done) {
+      var imageServiceUrl = '/not/a/real/url/ImageServer';
+      // var imageServiceUrl = 'http://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/GLS2010_Enhanced/ImageServer';
+      var dummyResponse = {
+        result: 'success'
+      };
+
+      // hijack any HTTP requests to item info end point
+      server.respondWith('GET',
+        imageServiceUrl + '/info/iteminfo?f=json',
+        [200, { 'Content-Type': 'application/json' }, JSON.stringify(dummyResponse) ]);
+
+      // call get item info and have fake server respond
+      imageServiceUtils.getItemInfo(imageServiceUrl).then(function(response) {
+        // success
+        expect(response).toEqual(dummyResponse);
+        done();
+      }, function(err) {
+        expect(err).toBeNull(null);
+        done();
+      });
+
+      // respond to any matching request
+      server.respond();
+    });
+  });
+```
+
+See the [Sinon.js](http://sinonjs.org/) documentation for more ways to use Sinon to help you spy on or fake your modules' dependencies.
+
 ### Other Test Frameworks
 
 This repo shows you how to use Karma to run unit tests using the Jasmine test framework, but Karma can be used with other test frameworks. For an example of how to use Karma to run [Mocha](http://visionmedia.github.io/mocha/) tests with the [ArcGIS API for JavaScript](http://js.arcgis.com), see:
@@ -212,6 +266,7 @@ And the latest versions of:
 * [ArcGIS for Developers](http://developers.arcgis.com)
 * [ArcGIS REST Services](http://resources.arcgis.com/en/help/arcgis-rest-api/)
 * [@esri](http://twitter.com/esri)
+* [Sinon.js](http://sinonjs.org/)
 
 ## Issues
 

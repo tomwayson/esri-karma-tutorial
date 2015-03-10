@@ -3,7 +3,8 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
-    frameworks: ['jasmine', 'dojo'],
+    // uncomment sinon for spies and fakes
+    frameworks: ['jasmine', 'dojo'/*, 'sinon'*/],
 
     // list of files / patterns to load in the browser
     files: [
@@ -91,6 +92,8 @@ module.exports = function(config) {
 
     plugins: [
       'karma-dojo',
+      // uncomment for sinon spies and fakes
+      // 'karma-sinon',
       'karma-jasmine',
       'karma-chrome-launcher'
       // uncomment for firefox launcher

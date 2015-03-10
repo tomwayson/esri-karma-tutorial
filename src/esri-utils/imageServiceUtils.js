@@ -18,7 +18,8 @@ function(
       var requestParams = { f: "json"};
       url += "?" + ioQuery.objectToQuery(requestParams);
       return esriRequest({
-        url: url
+        url: url,
+        handleAs: "json"
       });
     },
 
