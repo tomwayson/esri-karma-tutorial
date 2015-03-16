@@ -41,6 +41,14 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 
 ## Tutorial
 
+This tutorial walks you through configuring Karma to use additional plugins to run tests in additional browsers, use spies and fakes, generate code coverage reports, and integrate with generic task runners like Grunt.
+
+To view the completed tutorial, run the following at the command line:
+```bash
+git checkout completed-tutorial
+npm install
+```
+
 ### Testing in Additional Browsers
 
 Testing in additional browsers with Karma is a breeze. For each browser you want to test in you simply:
