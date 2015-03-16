@@ -39,7 +39,7 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 6. Run my tests: `karma start karma.conf.js` or just `karma start`
 7. Add your own specs and code under `/spec` and `/src` and let karma run your tests for you!
 
-## More fun with Karma
+## Tutorial
 
 ### Testing in Additional Browsers
 
@@ -56,19 +56,11 @@ For example, to run tests in FireFox as well as Chrome:
 set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
 npm install karma-firefox-launcher --save-dev
 ```
-After insalling the plugin, update the `browsers` and `plugins` sections of `karma.conf.js`:
+After insalling the plugin, update the `browsers` section of `karma.conf.js`:
 ```js
     browsers: ['Chrome', 'Firefox'],
 ```
 
-```js
-    plugins: [
-      'karma-dojo',
-      ...
-      'karma-chrome-launcher',
-      'karma-phantomjs-launcher'
-    ]
-```
 Re-run Karma and you should see your tests run in both Chrome and Firefox.
 
 See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.12/config/browsers.html) for more information.
@@ -78,86 +70,28 @@ See the [Browsers page of the Karma documentation](http://karma-runner.github.io
 If you prefer to not have Karma spawn several browser windows while you are coding you can have Karma run your tests in a "headless" browser such as [PhantomJS](http://phantomjs.org/).
 
 ```bash
-npm install --save-dev karma-phantomjs-launcher
+npm install karma-phantomjs-launcher --save-dev
 ```
 After insalling the plugin, update the `browsers` and `plugins` sections of `karma.conf.js`:
 ```js
     browsers: ['PhantomJS'],
 ```
 
-```js
-    plugins: [
-      'karma-dojo',
-      ...
-      'karma-phantomjs-launcher'
-    ]
-```
 Re-run Karma and you should see your tests run in PhantomJS.
 
 See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.12/config/browsers.html) for more information.
 
-### Calling Karma from Grunt
-
-Often you'll want to run your tests as part of some workflow (like a build). Futhermore, in that workflow, you may want to override your default test configuration settings, such as which browsers to use, or to only run the tests once. The steps below show how to use [Grunt](http://gruntjs.com/) to run tests using Karma's default configuration from above with the exception that the tests will only run one time.
-
-If you don't already have the [Grunt CLI](http://gruntjs.com/getting-started) installed globally, run this:
-```bash
-npm install -g grunt-cli
-```
-Then install a local grunt and the karma plugin for grunt in this repo:
-```bash
-npm install --save-dev grunt
-npm install --save-dev grunt-karma
-```
-Then add `gruntfile.js` at the repo's root folder with the following configuration:
-```js
-module.exports = function(grunt) {
-
-  grunt.initConfig({
-    karma: {
-      unit: {
-        // use Karma's defaults
-        configFile: 'karma.conf.js',
-        // override single run to stop after running once
-        singleRun: true
-      }
-    }
-  });
-
-  grunt.loadNpmTasks('grunt-karma');
-
-  grunt.registerTask('default', ['karma']);
-};
-
-```
-Finally run Karma from Grunt with:
-```bash
-grunt karma
-```
-
-See the [Grunt](http://gruntjs.com/getting-started) and [grunt-karma](https://www.npmjs.com/package/grunt-karma) documentaion for more information.
-
-### Code Coverage
-
-You can get [Istanbul](https://github.com/yahoo/istanbul) code coverage reports for your tests by installing the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin:
-
-```bash
-npm install karma-coverage --save-dev
-```
-
-After insalling the plugin, uncomment the coverage related lines in the `preprocessors`, `reporters`, `coverageReporter`, and `plugins` sections of `karma.conf.js` and run karma.
-
-See the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin README for more information.
-
 ### Spies, Fakes, and Mocks
 
 You can use spies, fakes, and mocks from [Sinon.js](http://sinonjs.org/) in your tests by installing the [karma-sinon](https://www.npmjs.com/package/karma-sinon) plugin:
-
 ```bash
 npm install karma-sinon --save-dev
 ```
 
-After insalling the plugin, uncomment the sinon related lines in the `frameworks`, and `plugins` sections of `karma.conf.js`.
+After insalling the plugin, add `'sinon'` to the list of `frameworks` in `karma.conf.js` as follows:
+```js
+    frameworks: ['jasmine', 'dojo', 'sinon'],
+```
 
 For an example of how to use Sinon.js's fake server to test code that generates an XHR request without actually makeing the XHR request, add the following test suite to `specs/imageServiceUtilsSpec.js`:
 
@@ -202,6 +136,65 @@ For an example of how to use Sinon.js's fake server to test code that generates 
 ```
 
 See the [Sinon.js](http://sinonjs.org/) documentation for more ways to use Sinon to help you spy on or fake your modules' dependencies.
+
+### Code Coverage
+
+You can get [Istanbul](https://github.com/yahoo/istanbul) code coverage reports for your tests by installing the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin:
+
+```bash
+npm install karma-coverage --save-dev
+```
+
+After insalling the plugin, uncomment the coverage related lines in the `preprocessors`, `reporters`, and `coverageReporter`, sections of `karma.conf.js` and run karma.
+
+See the [karma-coverage](https://github.com/karma-runner/karma-coverage) plugin README for more information.
+
+### Calling Karma from Grunt
+
+Often you'll want to run your tests as part of some workflow (like a build). Futhermore, in that workflow, you may want to override your default test configuration settings, such as which browsers to use, or to only run the tests once. The steps below show how to use [Grunt](http://gruntjs.com/) to run tests using Karma's default configuration from above with the exception that the tests will only run one time.
+
+If you don't already have the [Grunt CLI](http://gruntjs.com/getting-started) installed globally, run this:
+```bash
+npm install -g grunt-cli
+```
+Then install a local grunt and the karma plugin for grunt in this repo:
+```bash
+npm install grunt --save-dev
+npm install grunt-karma --save-dev
+```
+Then add `gruntfile.js` at the repo's root folder with the following configuration:
+```js
+module.exports = function(grunt) {
+
+  grunt.initConfig({
+    karma: {
+      // common options for all targets
+      options: {
+        // use Karma's defaults
+        configFile: 'karma.conf.js'
+      },
+      // options for the build target
+      build: {
+        // test in real browsers once beofre build
+        browsers: ['Chrome', 'Firefox'],
+        singleRun: true
+      }
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-karma');
+
+  grunt.registerTask('default', ['karma']);
+};
+```
+Finally run Karma from Grunt with:
+```bash
+grunt karma
+```
+
+Another common scenario is when you want to use Grunt's [watch](https://www.npmjs.com/package/grunt-contrib-watch) task to listen for file changes and then run the tests in Karma as a step (i.e. after jshint). In this case you'd add another target (i.e. `dev`) above and configure it to [run karma in background mode and have a watch target run the tests](https://www.npmjs.com/package/grunt-karma#karma-server-with-grunt-watch).
+
+See the [Grunt](http://gruntjs.com/getting-started) and [grunt-karma](https://www.npmjs.com/package/grunt-karma) documentaion for more information.
 
 ### Other Test Frameworks
 

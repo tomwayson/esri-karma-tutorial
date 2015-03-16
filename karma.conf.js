@@ -3,8 +3,7 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
-    // uncomment sinon for spies and fakes
-    frameworks: ['jasmine', 'dojo'/*, 'sinon'*/],
+    frameworks: ['jasmine', 'dojo'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -88,18 +87,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false,
+    singleRun: false
 
-    plugins: [
-      'karma-dojo',
-      // uncomment for sinon spies and fakes
-      // 'karma-sinon',
-      'karma-jasmine',
-      'karma-chrome-launcher'
-      // uncomment for firefox launcher
-      //, 'karma-firefox-launcher'
-      // uncomment for code coverage
-      //, 'karma-coverage'
-    ]
   });
 };
