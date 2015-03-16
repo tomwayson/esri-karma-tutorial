@@ -15,6 +15,20 @@
         top: 20px;
         right: 20px;
       }
+      #info {
+        position: absolute;
+        bottom: 50px;
+        left: 20px;
+        background-color: #fff;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #000;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 300px;
+      }
     </style>
     <script>
       // configure dojo loader
@@ -25,7 +39,7 @@
           async: true,
           packages: [
             {
-              name: "esri-utils",
+              name: 'esri-utils',
               location: path + 'esri-utils'
             }
           ]
@@ -34,37 +48,66 @@
     </script>
     <script src="http://js.arcgis.com/3.12/"></script>
     <script>
-      var map;
       require([
-        "dojo/parser", "dojo/dom", "dojo/on",
-        "esri/map",
-        "esri-utils/imageServiceUtils",
-        "dojo/domReady!"
+        'dojo/dom', 'dojo/on',
+        'esri/map',
+        'esri-utils/imageServiceUtils',
+        'dojo/domReady!'
       ], function(
-        parser, dom, on,
+        dom, on,
         Map,
         imageServiceUtils
       ) {
-        parser.parse();
+        var map;
+        var mapLoadHandler;
 
         // init the map
-        map = new Map("map", {
-          basemap: "topo",
+        map = new Map('map', {
+          basemap: 'dark-gray',
           center: [-122.45, 37.75],
-          zoom: 13,
-          sliderStyle: "small"
+          zoom: 12,
+          sliderStyle: 'small'
         });
 
         // init the imagery layer w/ default selected option
-        updateLayerUrl();
+        // and update imagery layer url each time the drop down changes
+        mapLoadHandler = map.on('load', function() {
+          mapLoadHandler.remove();
+          updateLayerUrl(dom.byId('selector').value);
+          on(dom.byId('selector'), 'change', function(e) {
+            var url = e.target.value;
+            updateLayerUrl(url);
+          });
 
-        // update imagery layer url each time the drop down changes
-        on(dom.byId('selector'), 'change', updateLayerUrl);
+        });
 
-        function updateLayerUrl(params) {
-          var url = dom.byId('selector').value;
-          imageServiceUtils.setUrl(map, url, {id: 'imageryLayer'});
+        function updateLayerUrl(url) {
+          var layerLoadHandler;
+          var layer = imageServiceUtils.setUrl(map, url, {id: 'imageryLayer'});
           console.log(map.layerIds);
+          if (layer.loaded) {
+            showLayerInfo(layer.url);
+          } else {
+            showInfo('Loading...');
+            layerLoadHandler = layer.on('load', function() {
+              layerLoadHandler.remove();
+              showLayerInfo(layer.url);
+            });
+          }
+        }
+
+        function showLayerInfo(url) {
+          var infoNode = dom.byId('info');
+          imageServiceUtils.getItemInfo(url).then(function(response) {
+            showInfo(response.snippet  || '');
+          }, function(err) {
+            console.log(err);
+            showInfo('There was an error getting item info');
+          });
+        }
+
+        function showInfo(infoHtml) {
+          dom.byId('info').innerHTML = infoHtml;
         }
       });
     </script>
@@ -78,6 +121,7 @@
         <option value="http://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/GLS2010_Enhanced/ImageServer" selected>Enhanced</option>
       </select>
     </div>
+    <div id="info"></div>
   </body>
 
 </html>
