@@ -3,7 +3,7 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
-    frameworks: ['jasmine', 'dojo'],
+    frameworks: ['jasmine', 'dojo', 'sinon'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -16,12 +16,12 @@ module.exports = function(config) {
 
 
     // uncomment the following for code coverage
-    // preprocessors: {
-    //   // source files, that you wanna generate coverage for
-    //   // do not include tests or libraries
-    //   // (these files will be instrumented by Istanbul)
-    //   'src/**/*.js': ['coverage']
-    // },
+    preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'src/**/*.js': ['coverage']
+    },
 
 
     // test results reporter to use
@@ -29,7 +29,7 @@ module.exports = function(config) {
     reporters: [
       'dots'
       // uncomment the following line for code coverage
-      // , 'coverage'
+      , 'coverage'
     ],
 
 
@@ -70,19 +70,16 @@ module.exports = function(config) {
     // set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
     // see: http://karma-runner.github.io/0.10/config/browsers.html
     browsers: [
-      'Chrome'
-      // add the name (from above) for each additional
-      // browser you want to test below
-      // , 'Firefox'
+      'PhantomJS'
     ],
 
 
     // uncomment the following for coverage options
     // see: https://github.com/karma-runner/karma-coverage#options
-    // coverageReporter: {
-    //   type : 'text',
-    //   dir: 'coverage/'
-    // },
+    coverageReporter: {
+      type : 'text',
+      dir: 'coverage/'
+    },
 
 
     // Continuous Integration mode

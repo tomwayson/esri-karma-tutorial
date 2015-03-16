@@ -8,6 +8,44 @@ define([
   imageServiceUtils
 ) {
 
+  describe('item info tests', function() {
+    var server;
+
+    beforeEach(function() {
+      server = sinon.fakeServer.create();
+    });
+
+    afterEach(function() {
+      server.restore();
+    });
+
+    it('should request item info', function(done) {
+      var imageServiceUrl = '/not/a/real/url/ImageServer';
+      // var imageServiceUrl = 'http://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/GLS2010_Enhanced/ImageServer';
+      var dummyResponse = {
+        result: 'success'
+      };
+
+      // hijack any HTTP requests to item info end point
+      server.respondWith('GET',
+        imageServiceUrl + '/info/iteminfo?f=json',
+        [200, { 'Content-Type': 'application/json' }, JSON.stringify(dummyResponse) ]);
+
+      // call get item info and have fake server respond
+      imageServiceUtils.getItemInfo(imageServiceUrl).then(function(response) {
+        // success
+        expect(response).toEqual(dummyResponse);
+        done();
+      }, function(err) {
+        expect(err).toBeNull(null);
+        done();
+      });
+
+      // respond to any matching request
+      server.respond();
+    });
+  });
+
   describe('map tests', function() {
     var map;
 
