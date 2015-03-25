@@ -53,15 +53,11 @@ npm install
 
 Testing in additional browsers with Karma is a breeze. For each browser you want to test in you simply:
 
-1. Install the browser launcher
+1. Install the browser launcher*
 2. Add the browser name in the `browsers` section
-3. Register the browser's launcher in the `plugins` section
-
-Note that you may need to first set the path to the browser's executable in an environment vairable.
 
 For example, to run tests in FireFox as well as Chrome:
 ```bash
-set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
 npm install karma-firefox-launcher --save-dev
 ```
 After insalling the plugin, update the `browsers` section of `karma.conf.js`:
@@ -71,7 +67,59 @@ After insalling the plugin, update the `browsers` section of `karma.conf.js`:
 
 Re-run Karma and you should see your tests run in both Chrome and Firefox.
 
+*Note that you may need to first set the path to the browser's executable in an environment vairable.
+```bash
+set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+```
+
 See the [Browsers page of the Karma documentation](http://karma-runner.github.io/0.12/config/browsers.html) for more information.
+
+### Testing in Internet Explorer and Emulating Older Versions
+
+If you are unlucky enough to have to support Internet Explorer, especially older versions, then you will want to run you tests in those environments as well.
+
+To run tests in Internet Explorer:
+```bash
+npm install karma-ie-launcher --save-dev
+```
+After insalling the plugin, update the `browsers` section of `karma.conf.js`:
+```js
+    browsers: ['Chrome', 'IE'],
+```
+
+Re-run Karma and you should see your tests run in both Chrome and Internet Explorer.
+
+Karma can also launch Internet Explorer in emulation mode to simulate running tests in older versions of Internet Explorer. To do that, add the following section to `karma.conf.js`:
+```js
+    // custom browser configurations
+    // to emulate older versions of IE
+    customLaunchers: {
+      // emulate IE8
+      IE8: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE8'
+      },
+      // emulate IE9
+      IE9: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE9'
+      },
+      // emulate IE10
+      IE10: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE10'
+      }
+    },
+```
+
+Then update the `browsers` section of `karma.conf.js` with the versions you want to test in:
+```js
+    browsers: ['Chrome', 'IE', 'IE10', 'IE9', 'IE8'],
+```
+
+Re-run Karma and you should see your tests run in both Chrome and all the versions of Internet Explorer that you specified.
+
+See the [Karma IE launcher documentation](https://github.com/karma-runner/karma-ie-launcher) for more information.
 
 ### Going Headless with PhantomJS
 

@@ -70,8 +70,32 @@ module.exports = function(config) {
     // set FIREFOX_BIN="c:\Program Files (x86)\Mozilla Firefox\firefox.exe"
     // see: http://karma-runner.github.io/0.10/config/browsers.html
     browsers: [
+      // 'Chrome',
+      // 'Firefox',
+      // 'IE',
+      // 'IE8',
       'PhantomJS'
     ],
+
+    // custom browser configurations
+    // to emulate older versions of IE
+    customLaunchers: {
+      // emulate IE8
+      IE8: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE8'
+      },
+      // emulate IE9
+      IE9: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE9'
+      },
+      // emulate IE10
+      IE10: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE10'
+      }
+    },
 
 
     // uncomment the following for coverage options
