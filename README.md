@@ -8,13 +8,13 @@ If you're building web mapping apps using the [ArcGIS API for JavaScript](https:
 <!-- TODO: add app screenshot -->
 <!--![App]()-->
 
-If you (don't already know and) want to know why Karma is so awesome, I suggest watching this video, starting at the point where the frist tests are run:
+If you (don't already know and) want to know why Karma is so awesome, I suggest watching this video, starting at the point where the first tests are run:
 
 http://youtu.be/MVw8N3hTfCI?t=3m44s
 
 In a nut shell, Karma:
 * is easy to intall and configure w/ NPM
-* serves up your app and test files in a local web server, which includes a reverse-proxy to prevent cross-origin requestes
+* serves up your app and test files in a local web server, which includes a reverse-proxy to prevent cross-origin requests
 * launches one or more browsers pointing to above web server and runs your tests
 * watches for changes in your source and test files and re-runs all your tests as soon as you save a file
 * works with most popular testing frameworks (Jasmine, Mocha, Qunit)
