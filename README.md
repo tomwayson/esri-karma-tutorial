@@ -34,7 +34,7 @@ This tutorial demonstrates the configuration settings to get Karma running Jasmi
 1. Clone the repo: `git clone https://github.com/tomwayson/esri-karma-tutorial`
 2. Go to local copy of repo: `cd esri-karma-tutorial`
 3. Install Node (if not already installed) from [http://nodejs.org/](http://nodejs.org/)
-4. Install Karma (if not already installed) `npm install karma -g`
+4. Install Karma (if not already installed) `npm install karma-cli -g`
 5. Install development dependencies (Karma plugins for Jasmine, Dojo, browsers, etc): `npm install`
 6. Run my tests: `karma start karma.conf.js` or just `karma start`
 7. Add your own specs and code under `/spec` and `/src` and let karma run your tests for you!
