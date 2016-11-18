@@ -1,6 +1,6 @@
 # Esri Karma Tutorial
 
-If you're building web mapping apps using the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/), and need a way to automate running your unit tests, this tutorial will show you how using the [Karma test runner](http://karma-runner.github.io/) and [Jasmine](http://pivotal.github.io/jasmine/) BDD-style testing framework.
+If you're building web mapping apps using the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/), and need a way to automate running your unit tests, this tutorial will show you how using the [Karma test runner](http://karma-runner.github.io/) and [Jasmine](https://jasmine.github.io/) BDD-style testing framework.
 
 <!-- TODO: add link to gh-pages
 [View it live]()
@@ -23,7 +23,7 @@ In a nut shell, Karma:
 
 This tutorial demonstrates the configuration settings to get Karma running Jasmine BDD-style tests on code that relies on the ArcGIS API for JavaScript.
 
-[Jasmine](https://github.com/pivotal/jasmine) is a popular and simple BDD-style JavaScript testing framework. Details on using Jasmine can be found at the [Jasmine Wiki]
+[Jasmine](https://github.com/jasmine/jasmine) is a popular and simple BDD-style JavaScript testing framework. Details on using Jasmine can be found at the [Jasmine Wiki]
 (http://jasmine.github.io/).
 
 **NOTE:** The current release of this tutorial runs on Jasmine 2.0 and uses  `done()` style async testing. If you want to use this tutorial with existing specs written for Jasmine 1.x (i.e. using the deprecated `runs()` and `waitsFor()` async syntax), you can check out the [v0.1.0 release](https://github.com/tomwayson/esri-karma-tutorial/releases/tag/v0.1.0) of this tutorial.
@@ -301,16 +301,16 @@ var dojoConfig = {
 And the latest versions of:
 * [Node](http://nodejs.org/)
 * [Karma](http://karma-runner.github.io/)
-* [Jasmine](http://pivotal.github.io/jasmine/)
+* [Jasmine](https://jasmine.github.io/)
 * [karma-dojo](https://github.com/karma-runner/karma-dojo)
 
 ## Resources
 * [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/)
 * [Karma](http://karma-runner.github.io/)
 * [Configuring karma-dojo](https://github.com/garcimouche/karma/tree/feature-328/test/e2e/dojo)
-* [Jasmine](http://pivotal.github.io/jasmine/)
+* [Jasmine](https://jasmine.github.io/)
 * [Jasmine Wiki]
-(https://github.com/pivotal/jasmine/wiki)
+(https://github.com/jasmine/jasmine/wiki)
 * [Node](http://nodejs.org/)
 * [ArcGIS for Developers](http://developers.arcgis.com)
 * [ArcGIS REST Services](http://resources.arcgis.com/en/help/arcgis-rest-api/)
@@ -328,7 +328,7 @@ Please do! See CONTRIBUTING.md
 ## Credit
 
 Largely inspired by:
-* The blog post by [Dave Bouwman](https://github.com/dbouwman) on [Automated Headless Unit Tests with Esri JS API](http://blog.davebouwman.com/2013/07/26/automated-headless-unit-tests-with-esri-js-api/) using [Jasmine](http://pivotal.github.io/jasmine/), Grunt, and PhantomJS
+* The blog post by [Dave Bouwman](https://github.com/dbouwman) on [Automated Headless Unit Tests with Esri JS API](http://blog.davebouwman.com/2013/07/26/automated-headless-unit-tests-with-esri-js-api/) using [Jasmine](https://jasmine.github.io/), Grunt, and PhantomJS
 * The tutorial by [David Spriggs](https://github.com/DavidSpriggs) on [using the intern with the ArcGIS API for JavaScript](https://github.com/DavidSpriggs/intern-tutorial-esri-jsapi) repo
 * [Scott Davis](https://twitter.com/ScottAGRC) and [Rene Rubalcava](https://twitter.com/odoenet) who graciously share their outstanding ideas and code
 
