@@ -344,7 +344,7 @@ Please do! See CONTRIBUTING.md
 ## Credit
 
 Largely inspired by:
-* The blog post by [Dave Bouwman](https://github.com/dbouwman) on [Automated Headless Unit Tests with Esri JS API](http://blog.davebouwman.com/2019/07/26/automated-headless-unit-tests-with-esri-js-api/) using [Jasmine](https://jasmine.github.io/), Grunt, and PhantomJS
+* The blog post by [Dave Bouwman](https://github.com/dbouwman) on [Automated Headless Unit Tests with Esri JS API](http://blog.davebouwman.com/2013/07/26/automated-headless-unit-tests-with-esri-js-api/) using [Jasmine](https://jasmine.github.io/), Grunt, and PhantomJS
 * The tutorial by [David Spriggs](https://github.com/DavidSpriggs) on [using the intern with the ArcGIS API for JavaScript](https://github.com/DavidSpriggs/intern-tutorial-esri-jsapi) repo
 * [Scott Davis](https://twitter.com/ScottAGRC) and [Rene Rubalcava](https://twitter.com/odoenet) who graciously share their outstanding ideas and code
 
