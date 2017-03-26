@@ -265,30 +265,46 @@ This tutorial relies on the [karma-dojo plugin](https://github.com/karma-runner/
 After insalling and configuring the plug in, the trick is to set the `dojoConfig` in main.js to use the [ArcGIS API for JavaScript](http://js.arcgis.com) for the Dojo and Esri packages as follows:
 
 ```
-var dojoConfig = {
+  window.dojoConfig = {
     packages: [
-        // local pacakges to test
-        {
-            name:"esri-utils",
-            location:"/base/src/esri-utils"
-        },
-        // hosted packages
-        {
-            name: 'esri',
-            location: 'http://js.arcgis.com/3.13/esri'
-        }, {
-            name: 'dojo',
-            location: 'http://js.arcgis.com/3.13/dojo'
-        }, {
-            name: 'dojox',
-            location: 'http://js.arcgis.com/3.13/dojox'
-        }, {
-            name: 'dijit',
-            location: 'http://js.arcgis.com/3.13/dijit'
-        }
+      // local pacakges to test
+      {
+          name:"esri-utils",
+          location:"/base/src/esri-utils"
+      },
+
+      // esri/dojo packages
+      {
+        name: 'dgrid',
+        location: 'http://js.arcgis.com/3.20/dgrid'
+      }, {
+        name: 'dijit',
+        location: 'http://js.arcgis.com/3.20/dijit'
+      }, {
+        name: 'esri',
+        location: 'http://js.arcgis.com/3.20/esri'
+      }, {
+        name: 'dojo',
+        location: 'http://js.arcgis.com/3.20/dojo'
+      }, {
+        name: 'dojox',
+        location: 'http://js.arcgis.com/3.20/dojox'
+      }, {
+        name: 'put-selector',
+        location: 'http://js.arcgis.com/3.20/put-selector'
+      }, {
+        name: 'util',
+        location: 'http://js.arcgis.com/3.20/util'
+      }, {
+        name: 'xstyle',
+        location: 'http://js.arcgis.com/3.20/xstyle'
+      }, {
+        name: 'moment',
+        location: 'http://js.arcgis.com/3.20/moment',
+      }
     ],
     async: true
-};
+  };
 
 ```
 
@@ -296,7 +312,7 @@ var dojoConfig = {
 
 ### Dependencies
 
-* [ArcGIS API for JavaScript](http://js.arcgis.com): built/tested on v3.6 and updated to latest; may work w/ earlier versions.
+* [ArcGIS API for JavaScript](http://js.arcgis.com): built/tested on v3.20 and updated to latest; may work w/ earlier versions.
 
 And the latest versions of:
 * [Node](http://nodejs.org/)
