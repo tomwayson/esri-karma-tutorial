@@ -254,7 +254,7 @@ See the [Grunt](http://gruntjs.com/getting-started) and [grunt-karma](https://ww
 
 ### Other Test Frameworks
 
-This repo shows you how to use Karma to run unit tests using the Jasmine test framework, but Karma can be used with other test frameworks. For an example of how to use Karma to run [Mocha](http://visionmedia.github.io/mocha/) tests with the [ArcGIS API for JavaScript](http://js.arcgis.com), see:
+This repo shows you how to use Karma to run unit tests using the Jasmine test framework, but Karma can be used with other test frameworks. For an example of how to use Karma to run [Mocha](http://mochajs.org/) tests with the [ArcGIS API for JavaScript](http://js.arcgis.com), see:
 
 https://github.com/Esri/landscape-modeler-js
 
