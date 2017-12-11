@@ -23,8 +23,7 @@ In a nut shell, Karma:
 
 This tutorial demonstrates the configuration settings to get Karma running Jasmine BDD-style tests on code that relies on the ArcGIS API for JavaScript.
 
-[Jasmine](https://github.com/jasmine/jasmine) is a popular and simple BDD-style JavaScript testing framework. Details on using Jasmine can be found at the [Jasmine Wiki]
-(http://jasmine.github.io/).
+[Jasmine](https://github.com/jasmine/jasmine) is a popular and simple BDD-style JavaScript testing framework. Details on using Jasmine can be found at the [Jasmine Wiki](http://jasmine.github.io/).
 
 **NOTE:** The current release of this tutorial runs on Jasmine 2.0 and uses  `done()` style async testing. If you want to use this tutorial with existing specs written for Jasmine 1.x (i.e. using the deprecated `runs()` and `waitsFor()` async syntax), you can check out the [v0.1.0 release](https://github.com/tomwayson/esri-karma-tutorial/releases/tag/v0.1.0) of this tutorial.
 
