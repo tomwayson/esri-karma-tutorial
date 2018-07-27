@@ -1,5 +1,7 @@
 # Esri Karma Tutorial
 
+> **NOTE:** I now consider the techniques shown in this tutorial as an anti-pattern. Specifically, I think that you should avoid using the ArcGIS API or Dojo to load your application code and especially your test code. Instead, try using something like [esri-loader](https://github.com/Esri/esri-loader) to lazy-load the ArcGIS API only when you need it. Then you can test your application code the way you normally would with Karma or whatever framework you like by mocking esri-laoder's `loadModules()` or your own modules that wrap it. If you are unable to use esri-loader, or you are maintainging a legacy Dojo 1 application, then you should probably just use [Intern](https://theintern.io/).
+
 If you're building web mapping apps using the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/), and need a way to automate running your unit tests, this tutorial will show you how using the [Karma test runner](http://karma-runner.github.io/) and [Jasmine](https://jasmine.github.io/) BDD-style testing framework.
 
 <!-- TODO: add link to gh-pages
